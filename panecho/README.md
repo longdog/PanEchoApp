@@ -112,42 +112,8 @@ conda activate panecho
 
 ## Docker Inference App
 
-This repository includes a single-container app that:
-- preprocesses input videos with `ffmpeg` to PanEcho format (`3 x 16 x 224 x 224`, ImageNet-normalized),
-- runs PanEcho inference, and
-- writes a text report with results.
-
-It also supports `--demo` mode that runs PanEcho on random tensor input (no video), matching the README-style model demo.
-
-### Build
-```bash
-docker build -t panecho-app .
-```
-
-### Run on a video
-```bash
-docker run --rm \
-  -v /path/to/local/models:/models \
-  -v /path/to/local/output:/output \
-  -v /path/to/local/videos:/videos:ro \
-  panecho-app \
-  --video /videos/echo.mp4 \
-  --output /output/results.txt
-```
-
-### Run in demo mode
-```bash
-docker run --rm \
-  -v /path/to/local/output:/output \
-  panecho-app \
-  --demo \
-  --output /output/results_demo.txt
-```
-
-Notes:
-- Mount `/models` as an external volume to persist downloaded model weights (`panecho.pt`).
-- Default output path is `/output/results.txt`.
-- By default, clip length is `16` (recommended for PanEcho).
+The Dockerized inference app now lives at repository root (`app/` + `Dockerfile`).
+Use the root-level README for current build/run instructions.
 
 ## Experiments
 

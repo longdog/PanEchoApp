@@ -14,7 +14,7 @@ import pandas as pd
 import torch
 from PIL import Image
 
-from src.models import FrameTransformer, MultiTaskModel
+from panecho.src.models import FrameTransformer, MultiTaskModel
 
 
 PANECHO_WEIGHTS_URL = "https://github.com/CarDS-Yale/PanEcho/releases/download/v1.0/panecho.pt"
@@ -196,7 +196,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--tasks-path",
         type=Path,
-        default=Path("content/tasks.pkl"),
+        default=Path("panecho/content/tasks.pkl"),
         help="Path to local PanEcho tasks.pkl file.",
     )
     return parser.parse_args()

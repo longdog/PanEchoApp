@@ -2,7 +2,7 @@
 
 This repository provides a Dockerized app that runs the PanEcho model on echocardiogram videos and writes a text report.
 
-Project code is in `panecho/`.
+App code is in `app/`. PanEcho source/model code is in `panecho/`.
 
 ## What the app does
 
@@ -16,13 +16,15 @@ Project code is in `panecho/`.
 
 ## Folder layout
 
-- `panecho/` - original PanEcho code + app wrapper + Dockerfile
+- `app/` - CLI app entrypoint and Python requirements
+- `panecho/` - original PanEcho model/code/assets
+- `Dockerfile` - container definition for this app
 - `README.md` - this usage guide
 
 ## Build
 
 ```bash
-docker build -t panecho-app -f panecho/Dockerfile panecho
+docker build -t panecho-app .
 ```
 
 ## Run with video
