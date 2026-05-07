@@ -6,13 +6,15 @@ App code is in `app/`. PanEcho source/model code is in `panecho/`.
 
 ## What the app does
 
-- Accepts an input video file and preprocesses it with `ffmpeg` to PanEcho format.
-- Uses PanEcho input settings from the original project:
-  - shape: `1 x 3 x 16 x 224 x 224` (default clip length 16)
-  - ImageNet normalization
-- Runs inference and saves predictions to a text file.
-- Supports demo mode (`--demo`) that runs the model on random input tensor, without video.
-- Stores downloaded model weights in an external mounted volume (`/models`).
+- Accepts an input file via `--video`, preprocesses it to PanEcho format, runs inference, and writes a text report.
+- Model input shape: `1 x 3 x 16 x 224 x 224` by default (16 frames; configurable with `--clip-len`), with ImageNet normalization.
+- Supports demo mode (`--demo`) with random input (no file).
+- Stores downloaded model weights in a mounted volume (`/models` by default).
+
+## Supported input formats
+
+- **Video**: common formats such as **MP4** and **AVI**.
+- **DICOM**: a single **multiframe** DICOM file (for example echocardiography loops). Pass it with `--video` the same way as a video file.
 
 ## Folder layout
 
